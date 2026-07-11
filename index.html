@@ -4,43 +4,44 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JOB मित्र - India ka No.1 Free WFH Job Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-  body{background:linear-gradient(135deg,#0c1a3a,#1e3a8a);color:#fff;text-align:center;padding:20px}
- .logo{font-size:2.8rem;font-weight:800;color:#facc15;margin-bottom:5px;text-shadow:0 0 10px #facc15}
- .tagline{font-size:1rem;color:#cbd5e1;margin-bottom:15px}
- .banner{background:linear-gradient(90deg,#facc15,#f59e0b);color:#000;font-weight:800;padding:12px;border-radius:50px;margin:15px auto;width:90%;font-size:0.9rem;box-shadow:0 4px 15px rgba(250,204,21,0.4)}
- .section-title{color:#38bdf8;font-size:1.6rem;font-weight:700;margin:25px 0 10px;border-bottom:2px solid #38bdf8;display:inline-block;padding-bottom:5px}
-  
- .job-card{background:#1e293b;border-radius:15px;padding:20px;margin:15px auto;width:90%;max-width:500px;text-align:left;border-left:5px solid #22c55e;box-shadow:0 4px 20px rgba(0,0,0,0.4);transition:0.3s}
- .job-card:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(34,197,94,0.3)}
- .job-header{display:flex;align-items:center;gap:15px;margin-bottom:10px}
- .job-logo{width:50px;height:50px;border-radius:10px;background:#fff;padding:5px;object-fit:contain}
- .job-title{color:#4ade80;font-size:1.2rem;font-weight:700}
- .job-detail{font-size:0.9rem;color:#cbd5e1;margin:5px 0}
- .job-detail b{color:#fff}
- .apply-btn{background:linear-gradient(90deg,#22c55e,#16a34a);color:#fff;border:none;padding:12px 20px;border-radius:10px;font-weight:700;font-size:1rem;width:100%;margin-top:15px;cursor:pointer;transition:0.3s}
- .apply-btn:hover{background:linear-gradient(90deg,#16a34a,#15803d);transform:scale(1.02)}
-  
+  body{background:#f8fafc;color:#1e293b;text-align:center;padding:20px}
+.container{max-width:900px;margin:0 auto;text-align:left}
+.logo{font-size:2.5rem;font-weight:800;color:#0f172a;margin-bottom:5px;text-align:center}
+.tagline{font-size:0.95rem;color:#475569;margin-bottom:15px;text-align:center}
+.banner{background:#facc15;color:#000;font-weight:800;padding:12px;border-radius:8px;margin:15px auto;width:100%;font-size:0.9rem;text-align:center}
+.section-title{color:#1e40af;font-size:1.8rem;font-weight:800;margin:30px 0 15px;padding-bottom:8px;border-bottom:3px solid #1e40af}
+
+.job-card{background:#fff;border-radius:12px;padding:20px;margin:20px 0;box-shadow:0 4px 12px rgba(0,0,0,0.08);border:1px solid #e2e8f0}
+.job-header{display:flex;align-items:center;gap:15px;margin-bottom:12px}
+.job-logo{width:55px;height:55px;border-radius:10px;background:#fff;padding:5px;object-fit:contain;border:1px solid #e2e8f0}
+.job-title{color:#0f172a;font-size:1.3rem;font-weight:800}
+.job-detail{font-size:0.95rem;color:#475569;margin:6px 0}
+.job-detail b{color:#1e293b}
+.apply-btn{background:#2563eb;color:#fff;border:none;padding:12px 20px;border-radius:8px;font-weight:700;font-size:1rem;width:100%;margin-top:15px;cursor:pointer;transition:0.3s}
+.apply-btn:hover{background:#1d4ed8}
+
   /* POPUP MODAL */
- .modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.9);justify-content:center;align-items:center;overflow-y:auto}
- .modal-content{background:#1e293b;padding:25px;border-radius:15px;width:90%;max-width:450px;text-align:center;border:2px solid #38bdf8}
- .captcha-code{font-size:2rem;font-weight:800;letter-spacing:5px;background:#0f172a;padding:10px;border-radius:8px;margin:15px 0;color:#facc15}
- .captcha-input{width:100%;padding:12px;border-radius:8px;border:1px solid #475569;background:#0f172a;color:#fff;font-size:1rem;text-align:center;margin-bottom:15px}
- .verify-btn{background:linear-gradient(90deg,#3b82f6,#2563eb);color:#fff;border:none;padding:12px;width:100%;border-radius:8px;font-weight:700;cursor:pointer;margin-top:10px}
- .close-btn{background:linear-gradient(90deg,#ef4444,#dc2626)}
+.modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.8);justify-content:center;align-items:center;overflow-y:auto;padding:20px}
+.modal-content{background:#fff;padding:25px;border-radius:12px;width:100%;max-width:550px;text-align:left;color:#1e293b;box-shadow:0 10px 30px rgba(0,0,0,0.3)}
+.captcha-code{font-size:2rem;font-weight:800;letter-spacing:5px;background:#f1f5f9;padding:10px;border-radius:8px;margin:15px 0;color:#0f172a;text-align:center}
+.captcha-input{width:100%;padding:12px;border-radius:8px;border:1px solid #cbd5e1;background:#fff;color:#000;font-size:1rem;text-align:center;margin-bottom:15px}
+.verify-btn{background:#2563eb;color:#fff;border:none;padding:12px;width:100%;border-radius:8px;font-weight:700;cursor:pointer;margin-top:10px;font-size:1rem}
+.close-btn{background:#ef4444}
 
   /* JOB DETAILS PAGE */
- .details-title{color:#facc15;font-size:1.4rem;margin-bottom:15px}
- .details-box{text-align:left;background:#0f172a;padding:15px;border-radius:10px;margin-bottom:15px}
- .details-box h4{color:#38bdf8;margin-bottom:8px}
- .details-box ul{list-style:none;padding-left:0}
- .details-box li{margin:8px 0;font-size:0.9rem;color:#cbd5e1}
- .details-box li::before{content:"✓ ";color:#22c55e;font-weight:bold}
+.details-title{color:#0f172a;font-size:1.6rem;margin-bottom:15px;font-weight:800}
+.details-box{background:#f8fafc;padding:15px;border-radius:8px;margin-bottom:15px;border-left:4px solid #2563eb}
+.details-box h4{color:#1e40af;margin-bottom:10px;font-size:1.1rem}
+.details-box ul{list-style:none;padding-left:0}
+.details-box li{margin:8px 0;font-size:0.95rem;color:#334155}
+.details-box li::before{content:"✓ ";color:#16a34a;font-weight:bold}
 </style>
 </head>
 <body>
-
+<div class="container">
   <div class="logo">JOB मित्र</div>
   <div class="tagline">India ka No.1 Free WFH Job Portal</div>
   <div class="banner">100% FREE JOINING | NO FEES | NO COMMISSION</div>
@@ -87,11 +88,13 @@
     <button class="apply-btn" onclick="openCaptcha('https://www.teleperformance.com/en-us/careers/india', 'tp')">Apply Now - Free</button>
   </div>
 
+</div>
+
   <!-- 1. CAPTCHA MODAL -->
   <div id="captchaModal" class="modal">
     <div class="modal-content">
-      <h3>Security Check</h3>
-      <p>Neeche diye gaye code ko box me likhe</p>
+      <h3 style="text-align:center">Security Check</h3>
+      <p style="text-align:center">Neeche diye gaye code ko box me likhe</p>
       <div class="captcha-code" id="captchaCode"></div>
       <input type="text" id="captchaInput" class="captcha-input" placeholder="Yahan code likhe">
       <button class="verify-btn" onclick="verifyCaptcha()">Verify & Continue</button>
@@ -103,6 +106,18 @@
   <div id="detailsModal" class="modal">
     <div class="modal-content">
       <h3 class="details-title" id="detailsTitle"></h3>
+      <div class="details-box">
+        <h4>💼 Work Details - Job Profile</h4>
+        <ul id="workDetails"></ul>
+      </div>
+      <div class="details-box">
+        <h4>💰 Salary + Benefits</h4>
+        <ul id="salaryDetails"></ul>
+      </div>
+      <div class="details-box">
+        <h4>📍 WFH Job Kaise Dhoonde - Original Guide</h4>
+        <ul id="wfhGuide"></ul>
+      </div>
       <div class="details-box">
         <h4>📝 Joining Process</h4>
         <ul id="joiningProcess"></ul>
@@ -132,22 +147,34 @@ let refID = "JOBMITRA2026";
 
 const jobData = {
   amazon: {
-    name: "AMAZON Customer Service",
+    name: "AMAZON - Customer Service Associate",
+    work: ["Customer ke calls, chat aur email ka jawab dena", "Product, Order, Return ke issue solve karna", "CRM Software me data update karna", "Daily target pura karna"],
+    salary: ["Fixed Salary: ₹25,000 - ₹35,000 per month", "PF + ESI + Health Insurance milega", "Performance Bonus: ₹3000 tak", "Work From Home Setup Allowance"],
+    wfh: ["Link pe click karte hi Amazon Jobs page khulega", "Search bar me likho: Remote India", "Location me 'Remote' select karein", "Job Type me 'Full Time' aur 'Work from Home' filter lagayein"],
     joining: ["Online Form Bharna", "Online Assessment Test", "HR Call Round", "Offer Letter Email pe"],
     interview: ["English Speaking Test", "Typing Speed 25 WPM", "Scenario Based Questions", "1 Round - 30 min"]
   },
   google: {
-    name: "GOOGLE Digital Executive",
+    name: "GOOGLE - Digital Relationship Executive",
+    work: ["Google Ads, Maps, YouTube ke clients ko support dena", "Email aur Call ke through solution dena", "Client data ko Google Sheet me maintain karna", "Weekly Report Submit karna"],
+    salary: ["Fixed Salary: Up To ₹30,000 per month", "PF + Insurance Benefits", "Google Swag aur Training Free", "Yearly Appraisal"],
+    wfh: ["Link pe click karte hi Google Careers page khulega", "Search me likho: Remote", "Location filter me 'India' select karein", "Workplace Type me 'Remote' option chunein"],
     joining: ["Google Career Site pe Apply", "Online Video Interview", "Manager Round", "Background Verification"],
     interview: ["Communication Skills", "Problem Solving", "Product Knowledge", "2 Round - 45 min"]
   },
   meesho: {
-    name: "MEESHO Support Executive",
+    name: "MEESHO - Customer Support Executive",
+    work: ["Meesho App users ki chat support karna", "Order, Payment, Return ke query handle karna", "Customer ko product ke baare me guide karna", "Complaints ko resolve karna"],
+    salary: ["Fixed Salary: ₹18,000 - ₹22,000 per month", "Incentives: ₹2000 - ₹5000 extra", "Work From Home Allowance", "Festival Bonus"],
+    wfh: ["Link pe click karte hi Meesho Careers page khulega", "Jobs section me jayein", "Department me 'Customer Support' select karein", "Job Title me 'Work From Home' likhi hogi"],
     joining: ["Career Page pe Form", "Chat Assessment", "HR Call", "Training 5 Days Online"],
     interview: ["Hindi/English Typing", "Customer Handling", "Mobile se Test", "1 Round - 20 min"]
   },
   tp: {
-    name: "TELEPERFORMANCE WFH Agent",
+    name: "TELEPERFORMANCE - Work From Home Agent",
+    work: ["International Clients ke liye Voice/Non-Voice Support", "Technical aur Billing issues solve karna", "Customer Satisfaction maintain karna", "Shift Roster ke hisaab se kaam"],
+    salary: ["Fixed Salary: ₹20,000 - ₹28,000 per month", "PF + ESI + Night Shift Allowance", "Performance Incentives", "Health Checkup Free"],
+    wfh: ["Link pe click karte hi TP Careers India page khulega", "Search bar me likho: Work From Home", "Location me 'India - Remote' select karein", "Job Category me 'Customer Service' dekhein"],
     joining: ["TP Career Portal", "Voice Test", "Operations Round", "Joining Formalities Online"],
     interview: ["Voice & Accent Test", "Computer Knowledge", "Typing Test", "2 Round - 40 min"]
   }
@@ -189,12 +216,14 @@ function verifyCaptcha(){
 function showJobDetails(company){
   let data = jobData[company];
   document.getElementById("detailsTitle").innerText = data.name;
-  
+
+  document.getElementById("workDetails").innerHTML = data.work.map(i=>`<li>${i}</li>`).join('');
+  document.getElementById("salaryDetails").innerHTML = data.salary.map(i=>`<li>${i}</li>`).join('');
+  document.getElementById("wfhGuide").innerHTML = data.wfh.map(i=>`<li>${i}</li>`).join('');
   document.getElementById("joiningProcess").innerHTML = data.joining.map(i=>`<li>${i}</li>`).join('');
   document.getElementById("interviewDetails").innerHTML = data.interview.map(i=>`<li>${i}</li>`).join('');
 
   document.getElementById("finalApplyBtn").onclick = function(){
-    // Affiliate link add
     let link = finalLink;
     if(link.includes("meesho")) link = link + "?ref=" + refID;
     if(link.includes("amazon")) link = link + "?tag=" + refID.toLowerCase();

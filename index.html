@@ -7,32 +7,36 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-  body{background:#f8fafc;color:#1e293b;text-align:center;padding:20px}
+  body{background:linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);color:#1e293b;text-align:center;padding:20px}
 .container{max-width:900px;margin:0 auto;text-align:left}
-.logo{font-size:2.5rem;font-weight:800;color:#0f172a;margin-bottom:5px;text-align:center}
-.tagline{font-size:0.95rem;color:#475569;margin-bottom:15px;text-align:center}
-.banner{background:#facc15;color:#000;font-weight:800;padding:12px;border-radius:8px;margin:15px auto;width:100%;font-size:0.9rem;text-align:center}
-.section-title{color:#1e40af;font-size:1.8rem;font-weight:800;margin:30px 0 15px;padding-bottom:8px;border-bottom:3px solid #1e40af}
-.job-card{background:#fff;border-radius:12px;padding:20px;margin:20px 0;box-shadow:0 4px 12px rgba(0,0,0,0.08);border:1px solid #e2e8f0}
+.logo{font-size:2.8rem;font-weight:800;background:linear-gradient(90deg,#2563eb,#1e40af);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:5px;text-align:center}
+.tagline{font-size:0.95rem;color:#475569;margin-bottom:15px;text-align:center;font-weight:600}
+.banner{background:linear-gradient(90deg,#facc15,#fbbf24);color:#000;font-weight:800;padding:14px;border-radius:10px;margin:15px auto;width:100%;font-size:0.95rem;text-align:center;box-shadow:0 4px 10px rgba(251,191,36,0.3)}
+.section-title{color:#1e40af;font-size:1.8rem;font-weight:800;margin:30px 0 15px;padding-bottom:8px;border-bottom:3px solid #2563eb;text-align:center}
+.job-card{background:#fff;border-radius:14px;padding:22px;margin:20px 0;box-shadow:0 6px 18px rgba(37,99,235,0.08);border:1px solid #e2e8f0;transition:0.3s}
+.job-card:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(37,99,235,0.12)}
 .job-header{display:flex;align-items:center;gap:15px;margin-bottom:12px}
-.job-logo{width:55px;height:55px;border-radius:10px;background:#fff;padding:5px;object-fit:contain;border:1px solid #e2e8f0}
+.job-logo{width:60px;height:60px;border-radius:12px;background:#fff;padding:6px;object-fit:contain;border:1px solid #e2e8f0;box-shadow:0 2px 6px rgba(0,0,0,0.05)}
 .job-title{color:#0f172a;font-size:1.3rem;font-weight:800}
 .job-detail{font-size:0.95rem;color:#475569;margin:6px 0}
 .job-detail b{color:#1e293b}
-.apply-btn{background:#2563eb;color:#fff;border:none;padding:12px 20px;border-radius:8px;font-weight:700;font-size:1rem;width:100%;margin-top:15px;cursor:pointer;transition:0.3s}
-.apply-btn:hover{background:#1d4ed8}
-.modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.8);justify-content:center;align-items:center;overflow-y:auto;padding:20px}
-.modal-content{background:#fff;padding:25px;border-radius:12px;width:100%;max-width:550px;text-align:left;color:#1e293b;box-shadow:0 10px 30px rgba(0,0,0,0.3)}
+.apply-btn{background:linear-gradient(90deg,#2563eb,#1d4ed8);color:#fff;border:none;padding:14px 20px;border-radius:10px;font-weight:800;font-size:1rem;width:100%;margin-top:15px;cursor:pointer;transition:0.3s;box-shadow:0 4px 12px rgba(37,99,235,0.3)}
+.apply-btn:hover{background:linear-gradient(90deg,#1d4ed8,#1e40af)}
+
+/* MOBILE FIX - YE 2 LINE SABSE IMPORTANT HAI */
+.modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.85);justify-content:center;align-items:flex-start;overflow-y:auto;padding:20px} 
+.modal-content{background:#fff;padding:25px;border-radius:14px;width:100%;max-width:550px;text-align:left;color:#1e293b;box-shadow:0 10px 30px rgba(0,0,0,0.3);margin:20px auto}
+
 .captcha-code{font-size:2rem;font-weight:800;letter-spacing:5px;background:#f1f5f9;padding:10px;border-radius:8px;margin:15px 0;color:#0f172a;text-align:center}
 .captcha-input{width:100%;padding:12px;border-radius:8px;border:1px solid #cbd5e1;background:#fff;color:#000;font-size:1rem;text-align:center;margin-bottom:15px}
-.verify-btn{background:#2563eb;color:#fff;border:none;padding:12px;width:100%;border-radius:8px;font-weight:700;cursor:pointer;margin-top:10px;font-size:1rem}
-.close-btn{background:#ef4444}
-.details-title{color:#0f172a;font-size:1.6rem;margin-bottom:15px;font-weight:800}
-.details-box{background:#f8fafc;padding:15px;border-radius:8px;margin-bottom:15px;border-left:4px solid #2563eb}
-.details-box h4{color:#1e40af;margin-bottom:10px;font-size:1.1rem}
+.verify-btn{background:linear-gradient(90deg,#2563eb,#1d4ed8);color:#fff;border:none;padding:14px;width:100%;border-radius:10px;font-weight:800;cursor:pointer;margin-top:10px;font-size:1rem}
+.close-btn{background:linear-gradient(90deg,#ef4444,#dc2626)}
+.details-title{color:#0f172a;font-size:1.6rem;margin-bottom:15px;font-weight:800;text-align:center}
+.details-box{background:#f8fafc;padding:16px;border-radius:10px;margin-bottom:15px;border-left:4px solid #2563eb}
+.details-box h4{color:#1e40af;margin-bottom:10px;font-size:1.1rem;font-weight:700}
 .details-box ul{list-style:none;padding-left:0}
-.details-box li{margin:8px 0;font-size:0.95rem;color:#334155}
-.details-box li::before{content:"✓ ";color:#16a34a;font-weight:bold}
+.details-box li{margin:8px 0;font-size:0.95rem;color:#334155;display:flex;align-items:flex-start;gap:8px}
+.details-box li::before{content:"✓";color:#16a34a;font-weight:bold;font-size:1.1rem}
 </style>
 </head>
 <body>
@@ -73,7 +77,6 @@
     <button class="apply-btn" onclick="openCaptcha('https://www.teleperformance.com/en-us/careers/india', 'tp')">Apply Now - Free</button>
   </div>
 
-  <!-- NAYA CARD 1 -->
   <div class="job-card">
     <div class="job-header">
       <img src="https://logo.clearbit.com/flipkart.com" class="job-logo">
@@ -84,14 +87,14 @@
     <button class="apply-btn" onclick="openCaptcha('https://www.flipkartcareers.com/#!/joblist', 'flipkart')">Apply Now - Free</button>
   </div>
 
-  <!-- NAYA CARD 2 -->
   <div class="job-card">
     <div class="job-header">
       <img src="https://logo.clearbit.com/zomato.com" class="job-logo">
       <div class="job-title">ZOMATO - Customer Support Associate</div>
     </div>
     <div class="job-detail"><b>Salary:</b> ₹18,000 - ₹25,000/month + Incentives</div>
-    <div class="job-detail"><b>Device:</b> Mobile + Internet | <b>Work:</b> Chat/Call Support</div>
+   
+ <div class="job-detail"><b>Device:</b> Mobile + Internet | <b>Work:</b> Chat/Call Support</div>
     <button class="apply-btn" onclick="openCaptcha('https://www.zomato.com/careers', 'zomato')">Apply Now - Free</button>
   </div>
 
@@ -113,6 +116,7 @@
   <div id="detailsModal" class="modal">
     <div class="modal-content">
       <h3 class="details-title" id="detailsTitle"></h3>
+      
       <div class="details-box">
         <h4>💼 Work Details - Job Profile</h4>
         <ul id="workDetails"></ul>
@@ -120,6 +124,10 @@
       <div class="details-box">
         <h4>💰 Salary + Benefits</h4>
         <ul id="salaryDetails"></ul>
+      </div>
+      <div class="details-box">
+        <h4>🎓 Qualification & Eligibility</h4>
+        <ul id="qualificationDetails"></ul>
       </div>
       <div class="details-box">
         <h4>📍 WFH Job Kaise Dhoonde - Original Guide</h4>
@@ -156,41 +164,46 @@ const jobData = {
   google: {
     name: "GOOGLE - Digital Relationship Executive",
     work: ["Google Ads, Maps, YouTube ke clients ko support dena", "Email aur Call ke through solution dena", "Client data ko Google Sheet me maintain karna"],
-    salary: ["Fixed Salary: Up To ₹30,000 per month", "PF + Insurance Benefits", "Google Swag aur Training Free"],
+    salary: ["Fixed Salary: Up To ₹30,000 per month", "PF + Insurance Benefits", "Google Swag aur Training Free", "Work From Home Setup Allowance"],
+    qualification: ["12th Pass ya Graduate", "English aur Hindi Communication achhi ho", "Computer + Internet knowledge", "Age: 18+ years"],
     wfh: ["Link pe click karte hi Google Careers page khulega", "Location filter me 'India' select karein", "Workplace Type me 'Remote' option chunein"],
-    joining: ["Google Career Site pe Apply", "Online Video Interview", "Manager Round", "Background Verification"],
+    joining: ["Google Career Site pe Apply", "Online Video Interview", "Manager Round", "Background Verification", "Offer Letter Email pe"],
     interview: ["Communication Skills", "Problem Solving", "Product Knowledge", "2 Round - 45 min"]
   },
   meesho: {
     name: "MEESHO - Customer Support Executive",
     work: ["Meesho App users ki chat support karna", "Order, Payment, Return ke query handle karna", "Customer ko product ke baare me guide karna"],
     salary: ["Fixed Salary: ₹18,000 - ₹22,000 per month", "Incentives: ₹2000 - ₹5000 extra", "Work From Home Allowance"],
+    qualification: ["10th/12th Pass", "Hindi typing aani chahiye", "Smartphone + Internet", "Customer handling experience preferred"],
     wfh: ["Link pe click karte hi Meesho Careers page khulega", "Jobs section me jayein", "Department me 'Customer Support' select karein"],
-    joining: ["Career Page pe Form", "Chat Assessment", "HR Call", "Training 5 Days Online"],
+    joining: ["Career Page pe Form", "Chat Assessment", "HR Call", "Training 5 Days Online", "Offer Letter Email pe"],
     interview: ["Hindi/English Typing", "Customer Handling", "Mobile se Test", "1 Round - 20 min"]
   },
   tp: {
     name: "TELEPERFORMANCE - Work From Home Agent",
     work: ["International Clients ke liye Voice/Non-Voice Support", "Technical aur Billing issues solve karna", "Customer Satisfaction maintain karna"],
-    salary: ["Fixed Salary: ₹20,000 - ₹28,000 per month", "PF + ESI + Night Shift Allowance", "Performance Incentives"],
+    salary: ["Fixed Salary: ₹20,000 - ₹28,000 per month", "PF + ESI + Night Shift Allowance", "Performance Incentives", "Work From Home Setup Allowance"],
+    qualification: ["Graduate Preferred, 12th Pass minimum", "English Communication achhi ho", "Laptop + Headset + Internet", "Age: 18-35 years"],
     wfh: ["Link pe click karte hi TP Careers India page khulega", "Search bar me likho: Work From Home", "Location me 'India - Remote' select karein"],
-    joining: ["TP Career Portal", "Voice Test", "Operations Round", "Joining Formalities Online"],
+    joining: ["TP Career Portal", "Voice Test", "Operations Round", "Joining Formalities Online", "Offer Letter Email pe"],
     interview: ["Voice & Accent Test", "Computer Knowledge", "Typing Test", "2 Round - 40 min"]
   },
   flipkart: {
     name: "FLIPKART - Customer Care Executive",
     work: ["Flipkart customers ki call aur chat support", "Order, Return, Refund ke issue solve karna", "CRM me complaint update karna"],
     salary: ["Fixed Salary: ₹19,000 - ₹24,000 per month", "PF + ESI + Performance Bonus", "Work From Home Allowance"],
+    qualification: ["12th Pass minimum", "Hindi + English bolna aana chahiye", "Laptop + Stable Internet", "Basic Computer Knowledge"],
     wfh: ["Link pe click karte hi Flipkart Careers page khulega", "Search me likho: Remote Customer Care", "Location: Work From Home filter lagao"],
-    joining: ["Flipkart Portal pe Apply", "Online Assessment", "HR Round", "Training 7 Days"],
+    joining: ["Flipkart Portal pe Apply", "Online Assessment", "HR Round", "Training 7 Days", "Offer Letter Email pe"],
     interview: ["Communication Test", "Typing 30 WPM", "Scenario Questions", "2 Round - 30 min"]
   },
   zomato: {
     name: "ZOMATO - Customer Support Associate",
     work: ["Zomato App users ki call aur chat support", "Order issue, Payment issue solve karna", "Delivery partner coordination"],
     salary: ["Fixed Salary: ₹18,000 - ₹25,000 per month", "Incentives + PF + Insurance", "Food Coupons Free"],
+    qualification: ["12th Pass", "Hindi/English Communication", "Smartphone + Internet", "24x7 Shift ke liye ready ho"],
     wfh: ["Link pe click karte hi Zomato Careers page khulega", "Search me likho: Customer Support", "Remote/WFH jobs filter karein"],
-    joining: ["Zomato Career Page", "Online Test", "HR Interview", "Onboarding Online"],
+    joining: ["Zomato Career Page", "Online Test", "HR Interview", "Onboarding Online", "Offer Letter Email pe"],
     interview: ["Hindi/English Fluency", "Customer Handling", "1 Round - 25 min"]
   }
 }
@@ -208,11 +221,13 @@ function openCaptcha(link, company){
   finalLink = link;
   currentCompany = company;
   document.getElementById("captchaModal").style.display = "flex";
+  document.body.style.overflow = "hidden"; // background scroll band
   currentCaptcha = generateCaptcha();
 }
 
 function closeCaptcha(){
   document.getElementById("captchaModal").style.display = "none";
+  document.body.style.overflow = "auto"; // background scroll on
   document.getElementById("captchaInput").value = "";
 }
 
@@ -233,6 +248,7 @@ function showJobDetails(company){
   document.getElementById("detailsTitle").innerText = data.name;
   document.getElementById("workDetails").innerHTML = data.work.map(i=>`<li>${i}</li>`).join('');
   document.getElementById("salaryDetails").innerHTML = data.salary.map(i=>`<li>${i}</li>`).join('');
+  document.getElementById("qualificationDetails").innerHTML = data.qualification.map(i=>`<li>${i}</li>`).join('');
   document.getElementById("wfhGuide").innerHTML = data.wfh.map(i=>`<li>${i}</li>`).join('');
   document.getElementById("joiningProcess").innerHTML = data.joining.map(i=>`<li>${i}</li>`).join('');
   document.getElementById("interviewDetails").innerHTML = data.interview.map(i=>`<li>${i}</li>`).join('');
@@ -244,10 +260,12 @@ function showJobDetails(company){
     closeDetails();
   }
   document.getElementById("detailsModal").style.display = "flex";
+  document.body.style.overflow = "hidden"; // background scroll band
 }
 
 function closeDetails(){
   document.getElementById("detailsModal").style.display = "none";
+  document.body.style.overflow = "auto"; // background scroll on
 }
 </script>
 

@@ -6,25 +6,37 @@
 <title>JOB मित्र - India ka No.1 Free WFH Job Portal</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-  body{background:linear-gradient(135deg,#0f172a,#1e3a8a);color:#fff;text-align:center;padding:20px}
-  .logo{font-size:2.5rem;font-weight:800;color:#fff;margin-bottom:5px}
-  .tagline{font-size:1rem;color:#cbd5e1;margin-bottom:15px}
-  .banner{background:#facc15;color:#000;font-weight:700;padding:12px;border-radius:50px;margin:15px auto;width:90%;font-size:0.9rem}
-  .section-title{color:#38bdf8;font-size:1.5rem;font-weight:700;margin:25px 0 10px;border-bottom:2px solid #38bdf8;display:inline-block;padding-bottom:5px}
-  .job-card{background:#1e293b;border-radius:15px;padding:20px;margin:15px auto;width:90%;max-width:500px;text-align:left;border-left:5px solid #22c55e;box-shadow:0 4px 15px rgba(0,0,0,0.3)}
-  .job-title{color:#4ade80;font-size:1.2rem;font-weight:700;margin-bottom:8px}
-  .job-detail{font-size:0.9rem;color:#cbd5e1;margin:5px 0}
-  .job-detail b{color:#fff}
-  .apply-btn{background:#22c55e;color:#fff;border:none;padding:12px 20px;border-radius:10px;font-weight:700;font-size:1rem;width:100%;margin-top:15px;cursor:pointer;transition:0.3s}
-  .apply-btn:hover{background:#16a34a;transform:scale(1.02)}
+  body{background:linear-gradient(135deg,#0c1a3a,#1e3a8a);color:#fff;text-align:center;padding:20px}
+ .logo{font-size:2.8rem;font-weight:800;color:#facc15;margin-bottom:5px;text-shadow:0 0 10px #facc15}
+ .tagline{font-size:1rem;color:#cbd5e1;margin-bottom:15px}
+ .banner{background:linear-gradient(90deg,#facc15,#f59e0b);color:#000;font-weight:800;padding:12px;border-radius:50px;margin:15px auto;width:90%;font-size:0.9rem;box-shadow:0 4px 15px rgba(250,204,21,0.4)}
+ .section-title{color:#38bdf8;font-size:1.6rem;font-weight:700;margin:25px 0 10px;border-bottom:2px solid #38bdf8;display:inline-block;padding-bottom:5px}
   
-  /* CAPTCHA POPUP */
-  .modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.8);justify-content:center;align-items:center}
-  .modal-content{background:#1e293b;padding:25px;border-radius:15px;width:90%;max-width:400px;text-align:center}
-  .captcha-code{font-size:2rem;font-weight:800;letter-spacing:5px;background:#0f172a;padding:10px;border-radius:8px;margin:15px 0;color:#facc15}
-  .captcha-input{width:100%;padding:12px;border-radius:8px;border:1px solid #475569;background:#0f172a;color:#fff;font-size:1rem;text-align:center;margin-bottom:15px}
-  .verify-btn{background:#3b82f6;color:#fff;border:none;padding:12px;width:100%;border-radius:8px;font-weight:700;cursor:pointer}
-  .close-btn{background:#ef4444;margin-top:10px}
+ .job-card{background:#1e293b;border-radius:15px;padding:20px;margin:15px auto;width:90%;max-width:500px;text-align:left;border-left:5px solid #22c55e;box-shadow:0 4px 20px rgba(0,0,0,0.4);transition:0.3s}
+ .job-card:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(34,197,94,0.3)}
+ .job-header{display:flex;align-items:center;gap:15px;margin-bottom:10px}
+ .job-logo{width:50px;height:50px;border-radius:10px;background:#fff;padding:5px;object-fit:contain}
+ .job-title{color:#4ade80;font-size:1.2rem;font-weight:700}
+ .job-detail{font-size:0.9rem;color:#cbd5e1;margin:5px 0}
+ .job-detail b{color:#fff}
+ .apply-btn{background:linear-gradient(90deg,#22c55e,#16a34a);color:#fff;border:none;padding:12px 20px;border-radius:10px;font-weight:700;font-size:1rem;width:100%;margin-top:15px;cursor:pointer;transition:0.3s}
+ .apply-btn:hover{background:linear-gradient(90deg,#16a34a,#15803d);transform:scale(1.02)}
+  
+  /* POPUP MODAL */
+ .modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.9);justify-content:center;align-items:center;overflow-y:auto}
+ .modal-content{background:#1e293b;padding:25px;border-radius:15px;width:90%;max-width:450px;text-align:center;border:2px solid #38bdf8}
+ .captcha-code{font-size:2rem;font-weight:800;letter-spacing:5px;background:#0f172a;padding:10px;border-radius:8px;margin:15px 0;color:#facc15}
+ .captcha-input{width:100%;padding:12px;border-radius:8px;border:1px solid #475569;background:#0f172a;color:#fff;font-size:1rem;text-align:center;margin-bottom:15px}
+ .verify-btn{background:linear-gradient(90deg,#3b82f6,#2563eb);color:#fff;border:none;padding:12px;width:100%;border-radius:8px;font-weight:700;cursor:pointer;margin-top:10px}
+ .close-btn{background:linear-gradient(90deg,#ef4444,#dc2626)}
+
+  /* JOB DETAILS PAGE */
+ .details-title{color:#facc15;font-size:1.4rem;margin-bottom:15px}
+ .details-box{text-align:left;background:#0f172a;padding:15px;border-radius:10px;margin-bottom:15px}
+ .details-box h4{color:#38bdf8;margin-bottom:8px}
+ .details-box ul{list-style:none;padding-left:0}
+ .details-box li{margin:8px 0;font-size:0.9rem;color:#cbd5e1}
+ .details-box li::before{content:"✓ ";color:#22c55e;font-weight:bold}
 </style>
 </head>
 <body>
@@ -36,63 +48,123 @@
   <h2 class="section-title">HOME JOBS</h2>
 
   <div class="job-card">
-    <div class="job-title">AMAZON - Customer Service Associate</div>
+    <div class="job-header">
+      <img src="https://logo.clearbit.com/amazon.com" class="job-logo">
+      <div class="job-title">AMAZON - Customer Service Associate</div>
+    </div>
     <div class="job-detail"><b>Salary:</b> ₹25,000 - ₹35,000/month + PF + Health Insurance</div>
     <div class="job-detail"><b>Device:</b> Laptop Compulsory | <b>Work:</b> Call/Chat/Email Support</div>
-    <button class="apply-btn" onclick="openCaptcha('https://www.amazon.jobs/en/jobs/remote-india')">Apply Now - Free</button>
+    <button class="apply-btn" onclick="openCaptcha('https://www.amazon.jobs/en/jobs/remote-india', 'amazon')">Apply Now - Free</button>
   </div>
 
   <div class="job-card">
-    <div class="job-title">GOOGLE - Digital Relationship Executive</div>
+    <div class="job-header">
+      <img src="https://logo.clearbit.com/google.com" class="job-logo">
+      <div class="job-title">GOOGLE - Digital Relationship Executive</div>
+    </div>
     <div class="job-detail"><b>Salary:</b> Up To ₹30,000/month + PF</div>
     <div class="job-detail"><b>Device:</b> Laptop + Webcam | <b>Work:</b> Ads, Maps, YouTube Support</div>
-    <button class="apply-btn" onclick="openCaptcha('https://careers.google.com/jobs/results/remote%20India')">Apply Now - Free</button>
+    <button class="apply-btn" onclick="openCaptcha('https://careers.google.com/jobs/results/remote%20India', 'google')">Apply Now - Free</button>
   </div>
 
   <div class="job-card">
-    <div class="job-title">MEESHO - Customer Support Executive</div>
+    <div class="job-header">
+      <img src="https://logo.clearbit.com/meesho.com" class="job-logo">
+      <div class="job-title">MEESHO - Customer Support Executive</div>
+    </div>
     <div class="job-detail"><b>Salary:</b> ₹18,000 - ₹22,000/month + Incentives</div>
     <div class="job-detail"><b>Device:</b> Mobile + Internet | <b>Work:</b> Chat Support</div>
-    <button class="apply-btn" onclick="openCaptcha('https://careers.meesho.com/')">Apply Now - Free</button>
+    <button class="apply-btn" onclick="openCaptcha('https://careers.meesho.com/', 'meesho')">Apply Now - Free</button>
   </div>
 
   <div class="job-card">
-    <div class="job-title">TELEPERFORMANCE - Work From Home Agent</div>
+    <div class="job-header">
+      <img src="https://logo.clearbit.com/teleperformance.com" class="job-logo">
+      <div class="job-title">TELEPERFORMANCE - Work From Home Agent</div>
+    </div>
     <div class="job-detail"><b>Salary:</b> ₹20,000 - ₹28,000/month + PF</div>
     <div class="job-detail"><b>Device:</b> Laptop + Headset | <b>Work:</b> Voice/Non-Voice Process</div>
-    <button class="apply-btn" onclick="openCaptcha('https://www.teleperformance.com/en-us/careers/india')">Apply Now - Free</button>
+    <button class="apply-btn" onclick="openCaptcha('https://www.teleperformance.com/en-us/careers/india', 'tp')">Apply Now - Free</button>
   </div>
 
-  <!-- CAPTCHA MODAL -->
+  <!-- 1. CAPTCHA MODAL -->
   <div id="captchaModal" class="modal">
     <div class="modal-content">
       <h3>Security Check</h3>
       <p>Neeche diye gaye code ko box me likhe</p>
       <div class="captcha-code" id="captchaCode"></div>
       <input type="text" id="captchaInput" class="captcha-input" placeholder="Yahan code likhe">
-      <button class="verify-btn" onclick="verifyCaptcha()">Verify & Apply</button>
+      <button class="verify-btn" onclick="verifyCaptcha()">Verify & Continue</button>
       <button class="verify-btn close-btn" onclick="closeCaptcha()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- 2. JOB DETAILS + SAFETY MODAL -->
+  <div id="detailsModal" class="modal">
+    <div class="modal-content">
+      <h3 class="details-title" id="detailsTitle"></h3>
+      <div class="details-box">
+        <h4>📝 Joining Process</h4>
+        <ul id="joiningProcess"></ul>
+      </div>
+      <div class="details-box">
+        <h4>🎤 Interview Details</h4>
+        <ul id="interviewDetails"></ul>
+      </div>
+      <div class="details-box">
+        <h4>🛡️ Safety Tips - Spam se Bache</h4>
+        <ul>
+          <li>Kabhi bhi paise mat dena. JOB मित्र 100% FREE hai</li>
+          <li>Company kabhi WhatsApp pe paise nahi maangti</li>
+          <li>Sirf official company email se baat karein</li>
+          <li>Document ke naam pe paise maange to turant report karein</li>
+        </ul>
+      </div>
+      <button class="verify-btn" id="finalApplyBtn">Company Site Pe Apply Karein</button>
+      <button class="verify-btn close-btn" onclick="closeDetails()">Wapas</button>
     </div>
   </div>
 
 <script>
 let finalLink = "";
-let refID = "JOBMITRA2026"; // BAAD ME APNA AFFILIATE ID YAHAN DAALNA
+let currentCompany = "";
+let refID = "JOBMITRA2026";
+
+const jobData = {
+  amazon: {
+    name: "AMAZON Customer Service",
+    joining: ["Online Form Bharna", "Online Assessment Test", "HR Call Round", "Offer Letter Email pe"],
+    interview: ["English Speaking Test", "Typing Speed 25 WPM", "Scenario Based Questions", "1 Round - 30 min"]
+  },
+  google: {
+    name: "GOOGLE Digital Executive",
+    joining: ["Google Career Site pe Apply", "Online Video Interview", "Manager Round", "Background Verification"],
+    interview: ["Communication Skills", "Problem Solving", "Product Knowledge", "2 Round - 45 min"]
+  },
+  meesho: {
+    name: "MEESHO Support Executive",
+    joining: ["Career Page pe Form", "Chat Assessment", "HR Call", "Training 5 Days Online"],
+    interview: ["Hindi/English Typing", "Customer Handling", "Mobile se Test", "1 Round - 20 min"]
+  },
+  tp: {
+    name: "TELEPERFORMANCE WFH Agent",
+    joining: ["TP Career Portal", "Voice Test", "Operations Round", "Joining Formalities Online"],
+    interview: ["Voice & Accent Test", "Computer Knowledge", "Typing Test", "2 Round - 40 min"]
+  }
+}
 
 function generateCaptcha(){
   let chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
   let code = "";
-  for(let i=0; i<6; i++){
-    code += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
+  for(let i=0; i<6; i++) code += chars.charAt(Math.floor(Math.random() * chars.length));
   document.getElementById("captchaCode").innerText = code;
   return code;
 }
-
 let currentCaptcha = generateCaptcha();
 
-function openCaptcha(link){
+function openCaptcha(link, company){
   finalLink = link;
+  currentCompany = company;
   document.getElementById("captchaModal").style.display = "flex";
   currentCaptcha = generateCaptcha();
 }
@@ -105,18 +177,35 @@ function closeCaptcha(){
 function verifyCaptcha(){
   let userInput = document.getElementById("captchaInput").value.toUpperCase();
   if(userInput === currentCaptcha){
-    // REFERAL LINK AUTO JUD JAYEGA
-    if(finalLink.includes("meesho")) finalLink = finalLink + "?ref=" + refID;
-    if(finalLink.includes("amazon")) finalLink = finalLink + "?tag=" + refID.toLowerCase();
-    if(finalLink.includes("flipkart")) finalLink = finalLink + "?affid=" + refID;
-    
-    window.open(finalLink, '_blank'); // Naye tab me khulega
     closeCaptcha();
+    showJobDetails(currentCompany);
   } else {
     alert("Galat Captcha! Dobara try karein");
     currentCaptcha = generateCaptcha();
     document.getElementById("captchaInput").value = "";
   }
+}
+
+function showJobDetails(company){
+  let data = jobData[company];
+  document.getElementById("detailsTitle").innerText = data.name;
+  
+  document.getElementById("joiningProcess").innerHTML = data.joining.map(i=>`<li>${i}</li>`).join('');
+  document.getElementById("interviewDetails").innerHTML = data.interview.map(i=>`<li>${i}</li>`).join('');
+
+  document.getElementById("finalApplyBtn").onclick = function(){
+    // Affiliate link add
+    let link = finalLink;
+    if(link.includes("meesho")) link = link + "?ref=" + refID;
+    if(link.includes("amazon")) link = link + "?tag=" + refID.toLowerCase();
+    window.open(link, '_blank');
+    closeDetails();
+  }
+  document.getElementById("detailsModal").style.display = "flex";
+}
+
+function closeDetails(){
+  document.getElementById("detailsModal").style.display = "none";
 }
 </script>
 

@@ -9,7 +9,7 @@
 body{background:#f5f7fa;color:#333}
 header{background:linear-gradient(135deg,#2563eb,#1e40af);color:white;text-align:center;padding:20px;position:sticky;top:0;z-index:10}
 .filter-bar{display:flex;gap:8px;justify-content:center;margin-top:10px;flex-wrap:wrap}
-.filter-btn{background:rgba(255,255,255,0.2);border:1px solid white;color:white;padding:6px 12px;border-radius:20px;font-size:12px;cursor:pointer}
+.filter-btn{background:rgba(255,255,255,0.2);border:1px solid white;color:white;padding:8px 14px;border-radius:20px;font-size:12px;cursor:pointer;font-weight:600}
 .filter-btn.active{background:white;color:#2563eb}
 .safety-bar{background:#dc2626;color:white;text-align:center;padding:10px;font-weight:600;font-size:14px}
 .container{max-width:650px;margin:20px auto;padding:10px}
@@ -37,10 +37,10 @@ footer{padding:20px;text-align:center;font-size:12px;color:#666;background:white
   <h1>JOB मित्र</h1>
   <p>100% FREE - All Over India Jobs | 10+ Badi Company</p>
   <div class="filter-bar">
-    <button class="filter-btn active" onclick="filterJobs('all')">Sabhi Job</button>
-    <button class="filter-btn" onclick="filterJobs('wfh')">WFH Job</button>
-    <button class="filter-btn" onclick="filterJobs('mobile')">Mobile Wali</button>
-    <button class="filter-btn" onclick="filterJobs('allindia')">All India</button>
+    <button class="filter-btn active" onclick="filterAndOpen('all','https://www.naukri.com')">Sabhi Job</button>
+    <button class="filter-btn" onclick="filterAndOpen('wfh','https://www.naukri.com/work-from-home-jobs')">WFH Job</button>
+    <button class="filter-btn" onclick="filterAndOpen('mobile','https://www.apna.co/jobs')">Mobile Wali</button>
+    <button class="filter-btn" onclick="filterAndOpen('allindia','https://www.naukri.com')">All India</button>
   </div>
 </header>
 
@@ -133,7 +133,7 @@ function goToJob(i,correctAns){
   }
 }
 
-function filterJobs(type){
+function filterAndOpen(type, directLink){
   document.querySelectorAll('.filter-btn').forEach(btn=>btn.classList.remove('active'));
   event.target.classList.add('active');
 
@@ -148,6 +148,11 @@ function filterJobs(type){
       }
     }
   });
+
+  // Category pe click karte hi direct site bhi khule
+  if(type!= 'all'){
+    window.open(directLink, '_blank');
+  }
 }
 
 renderJobs();

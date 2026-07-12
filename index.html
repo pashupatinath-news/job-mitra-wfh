@@ -7,11 +7,13 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins', sans-serif}
 body{background:#f5f7fa;color:#333}
-header{background:linear-gradient(135deg,#2563eb,#1e40af);color:white;text-align:center;padding:20px}
-header h1{font-size:24px}
+header{background:linear-gradient(135deg,#2563eb,#1e40af);color:white;text-align:center;padding:20px;position:sticky;top:0;z-index:10}
+.filter-bar{display:flex;gap:8px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+.filter-btn{background:rgba(255,255,255,0.2);border:1px solid white;color:white;padding:6px 12px;border-radius:20px;font-size:12px;cursor:pointer}
+.filter-btn.active{background:white;color:#2563eb}
 .safety-bar{background:#dc2626;color:white;text-align:center;padding:10px;font-weight:600;font-size:14px}
 .container{max-width:650px;margin:20px auto;padding:10px}
-.job-card{background:white;border-radius:12px;padding:16px;margin-bottom:15px;box-shadow:0 2px 8px rgba(0,0,0,0.1);border-left:4px solid #2563eb}
+.job-card{background:white;border-radius:12px;padding:16px;margin-bottom:15px;box-shadow:0 2px 8px rgba(0,0,0,0.1);border-left:4px solid #2563eb;display:block}
 .job-title{font-size:18px;font-weight:700;color:#1e40af}
 .company{color:#666;font-size:14px;margin:4px 0}
 .company span{color:#2563eb;font-weight:600}
@@ -22,9 +24,11 @@ header h1{font-size:24px}
 .tag{background:#e0e7ff;color:#3730a3;padding:4px 10px;border-radius:20px;font-size:11px}
 .tag.green{background:#d1fae5;color:#065f46}
 .tag.orange{background:#ffedd5;color:#9a3412}
+.tag.blue{background:#dbeafe;color:#1e40af}
 .apply-btn{width:100%;background:#2563eb;color:white;border:none;padding:12px;border-radius:8px;font-size:16px;font-weight:600;margin-top:10px;cursor:pointer}
 .apply-btn:active{transform:scale(0.98)}
 .captcha-box{display:none;background:#fef3c7;border:1px solid #f59e0b;padding:12px;border-radius:8px;margin-top:10px;text-align:center}
+.captcha-question{font-size:20px;font-weight:700;color:#dc2626;margin-bottom:8px}
 footer{padding:20px;text-align:center;font-size:12px;color:#666;background:white;margin-top:20px}
 </style>
 </head>
@@ -32,7 +36,13 @@ footer{padding:20px;text-align:center;font-size:12px;color:#666;background:white
 
 <header>
   <h1>JOB मित्र</h1>
-  <p>100% FREE - 10+ Badi Company | Mobile + Laptop</p>
+  <p>100% FREE - 10+ Badi Company</p>
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterJobs('all')">Sabhi Job</button>
+    <button class="filter-btn" onclick="filterJobs('wfh')">WFH Job</button>
+    <button class="filter-btn" onclick="filterJobs('mobile')">Mobile Wali</button>
+    <button class="filter-btn" onclick="filterJobs('balaghat')">Balaghat</button>
+  </div>
 </header>
 
 <div class="safety-bar">
@@ -42,80 +52,106 @@ footer{padding:20px;text-align:center;font-size:12px;color:#666;background:white
 <div class="container" id="jobList"></div>
 
 <footer>
-  <p><b>Disclaimer:</b> Hum sirf job ka link dete hai. Job dene wali company hai. GST/PAN Verified</p>
+  <p><b>Disclaimer:</b> Hum sirf job ka link dete hai. Job dene wali company hai.</p>
   <p>Contact: jobmitra@gmail.com</p>
 </footer>
 
 <script>
 const jobs = [
-  {title:"BPO Telecaller WFH", company:"Quess Corp", platform:"Naukri.com", salary:"₹15,000 - ₹22,000", location:"Work From Home", type:"Full Time", qualification:"10th Pass", experience:"Fresher", age:"18-35", pf:"PF Haan", work:"Mobile + Laptop", process:"1. Apply Now → 2. Naukri pe Signup → 3. HR Call → 4. Joining", link:"https://www.naukri.com/job-listings-bpo-telecaller-work-from-home-quess-corp-"},
-  {title:"Amazon Customer Support", company:"Amazon", platform:"Amazon Jobs", salary:"₹18,000 - ₹25,000", location:"Work From Home", type:"Full Time", qualification:"12th + English", experience:"Fresher", age:"18-30", pf:"PF Haan", work:"Laptop + Internet", process:"1. Apply → 2. Amazon pe Test → 3. Interview → 4. Offer Letter", link:"https://www.amazon.jobs/en/jobs"},
-  {title:"Field Sales Executive", company:"Flipkart", platform:"Apna App", salary:"₹20,000 + Incentive", location:"Balaghat, MP", type:"Full Time", qualification:"10th Pass", experience:"0-3 Years", age:"18-40", pf:"PF Haan", work:"Mobile + Bike", process:"1. Apply → 2. Apna pe Call → 3. Interview → 4. Joining", link:"https://www.apna.co/jobs/flipkart-sales-jobs-balaghat"},
-  {title:"Data Entry Operator WFH", company:"Tata BSS", platform:"Naukri.com", salary:"₹12,000 - ₹18,000", location:"Work From Home", type:"Part Time", qualification:"10th Pass", experience:"Fresher", age:"18-35", pf:"PF Nahi", work:"Laptop Must", process:"1. Apply → 2. Test → 3. Training → 4. Work Start", link:"https://www.naukri.com/data-entry-work-from-home-jobs"},
-  {title:"Insurance Agent", company:"LIC", platform:"Apna App", salary:"₹25,000 + Commission", location:"Balaghat, MP", type:"Full Time", qualification:"12th Pass", experience:"0-2 Years", age:"21-45", pf:"PF Nahi", work:"Mobile", process:"1. Apply → 2. LIC Training → 3. IRDA Exam → 4. Code Milta Hai", link:"https://www.apna.co/jobs/insurance-agent-jobs-balaghat"},
-  {title:"Bank DSA / Loan Agent", company:"HDFC Bank", platform:"Naukri.com", salary:"₹18,000 + Incentive", location:"Balaghat, MP", type:"Full Time", qualification:"12th Pass", experience:"Fresher", age:"21-40", pf:"PF Haan", work:"Mobile + Bike", process:"1. Apply → 2. Bank Interview → 3. DSA Code → 4. Loan Karo", link:"https://www.naukri.com/bank-dsa-jobs"},
-  {title:"Flipkart Delivery Executive", company:"Flipkart", platform:"Apna App", salary:"₹15,000 - ₹20,000", location:"Balaghat, MP", type:"Full Time", qualification:"10th Pass", experience:"Fresher", age:"18-40", pf:"PF Haan", work:"Mobile + Bike", process:"1. Apply → 2. Document Check → 3. Bike Training → 4. Joining", link:"https://www.apna.co/jobs/flipkart-delivery-jobs-balaghat"},
-  {title:"Swiggy Delivery Boy", company:"Swiggy", platform:"WorkIndia", salary:"₹18,000 - ₹25,000", location:"Balaghat, MP", type:"Part Time", qualification:"8th Pass", experience:"Fresher", age:"18-35", pf:"PF Nahi", work:"Mobile + Bike", process:"1. Apply → 2. WorkIndia Signup → 3. Bag Milega → 4. Delivery Start", link:"https://www.workindia.in"},
-  {title:"Zomato Delivery Partner", company:"Zomato", platform:"WorkIndia", salary:"₹18,000 - ₹24,000", location:"Balaghat, MP", type:"Part Time", qualification:"8th Pass", experience:"Fresher", age:"18-35", pf:"PF Nahi", work:"Mobile + Bike", process:"1. Apply → 2. Zomato App Download → 3. Training → 4. Joining", link:"https://www.workindia.in"},
-  {title:"Hospital Receptionist", company:"Govt Hospital", platform:"Naukri.com", salary:"₹10,000 - ₹14,000", location:"Balaghat, MP", type:"Full Time", qualification:"12th Pass", experience:"0-1 Years", age:"18-30", pf:"PF Haan", work:"Office", process:"1. Apply → 2. Interview → 3. Document → 4. Joining", link:"https://www.naukri.com/hospital-receptionist-jobs-balaghat"},
-  {title:"Retail Sales Executive", company:"Reliance Trends", platform:"Apna App", salary:"₹14,000 - ₹18,000", location:"Balaghat, MP", type:"Full Time", qualification:"10th Pass", experience:"Fresher", age:"18-35", pf:"PF Haan", work:"Office", process:"1. Apply → 2. Store Interview → 3. Training → 4. Joining", link:"https://www.apna.co/jobs/reliance-retail-jobs-balaghat"},
-  {title:"Driver - Cab", company:"Ola/Uber", platform:"Quikr Jobs", salary:"₹20,000 - ₹30,000", location:"Balaghat, MP", type:"Full Time", qualification:"8th Pass", experience:"1 Year License", age:"21-45", pf:"PF Nahi", work:"Mobile + Car", process:"1. Apply → 2. Document Upload → 3. Car Check → 4. Ride Start", link:"https://www.quikrjobs.com"},
-  {title:"Factory Helper", company:"ITC Factory", platform:"WorkIndia", salary:"₹12,000 - ₹16,000", location:"Jabalpur, MP", type:"Full Time", qualification:"8th Pass", experience:"Fresher", age:"18-40", pf:"PF Haan", work:"Factory", process:"1. Apply → 2. WorkIndia Call → 3. Medical → 4. Joining", link:"https://www.workindia.in"},
-  {title:"Tele Sales", company:"Bajaj Finance", platform:"Indeed", salary:"₹15,000 + Incentive", location:"Work From Home", type:"Full Time", qualification:"12th Pass", experience:"Fresher", age:"18-35", pf:"PF Haan", work:"Mobile + Laptop", process:"1. Apply → 2. Indeed Signup → 3. Interview → 4. Training", link:"https://in.indeed.com"},
-  {title:"Security Guard", company:"G4S", platform:"Quikr Jobs", salary:"₹13,000 - ₹16,000", location:"Balaghat, MP", type:"Full Time", qualification:"8th Pass", experience:"Fresher", age:"18-45", pf:"PF Haan", work:"Office", process:"1. Apply → 2. Physical → 3. Training → 4. Posting", link:"https://www.quikrjobs.com"},
-  {title:"Content Writer WFH", company:"Freelance", platform:"LinkedIn", salary:"₹10,000 - ₹20,000", location:"Work From Home", type:"Part Time", qualification:"12th Pass", experience:"Fresher", age:"18-40", pf:"PF Nahi", work:"Laptop + Mobile", process:"1. Apply → 2. LinkedIn Profile → 3. Sample → 4. Work Start", link:"https://www.linkedin.com/jobs"},
-  {title:"Warehouse Worker", company:"Amazon", platform:"Amazon Jobs", salary:"₹16,000 - ₹19,000", location:"Nagpur, MH", type:"Full Time", qualification:"10th Pass", experience:"Fresher", age:"18-35", pf:"PF Haan", work:"Warehouse", process:"1. Apply → 2. Amazon Test → 3. Joining → 4. Training", link:"https://www.amazon.jobs/en/jobs"},
-  {title:"Online Tutor", company:"Vedantu", platform:"Indeed", salary:"₹20,000 - ₹35,000", location:"Work From Home", type:"Part Time", qualification:"Graduate", experience:"0-2 Years", age:"20-40", pf:"PF Nahi", work:"Laptop + Mobile", process:"1. Apply → 2. Demo Class → 3. Training → 4. Teaching", link:"https://in.indeed.com"}
+  {title:"BPO Telecaller WFH", company:"Quess Corp", platform:"Naukri.com", salary:"₹15,000 - ₹22,000", location:"Work From Home", type:"Full Time", qualification:"10th Pass", experience:"Fresher", age:"18-35", pf:"PF Haan", work:"Mobile + Laptop", process:"1. Apply → 2. Naukri Signup → 3. HR Call → 4. Joining", link:"https://www.naukri.com/job-listings-bpo-telecaller-work-from-home-quess-corp-", tags:["wfh","mobile"]},
+  {title:"Amazon Customer Support", company:"Amazon", platform:"Amazon Jobs", salary:"₹18,000 - ₹25,000", location:"Work From Home", type:"Full Time", qualification:"12th + English", experience:"Fresher", age:"18-30", pf:"PF Haan", work:"Laptop + Internet", process:"1. Apply → 2. Amazon Test → 3. Interview → 4. Offer Letter", link:"https://www.amazon.jobs/en/jobs", tags:["wfh"]},
+  {title:"Field Sales Executive", company:"Flipkart", platform:"Apna App", salary:"₹20,000 + Incentive", location:"Balaghat, MP", type:"Full Time", qualification:"10th Pass", experience:"0-3 Years", age:"18-40", pf:"PF Haan", work:"Mobile + Bike", process:"1. Apply → 2. Apna Call → 3. Interview → 4. Joining", link:"https://www.apna.co/jobs/flipkart-sales-jobs-balaghat", tags:["mobile","balaghat"]},
+  {title:"Data Entry Operator WFH", company:"Tata BSS", platform:"Naukri.com", salary:"₹12,000 - ₹18,000", location:"Work From Home", type:"Part Time", qualification:"10th Pass", experience:"Fresher", age:"18-35", pf:"PF Nahi", work:"Laptop Must", process:"1. Apply → 2. Test → 3. Training → 4. Work Start", link:"https://www.naukri.com/data-entry-work-from-home-jobs", tags:["wfh"]},
+  {title:"Insurance Agent", company:"LIC", platform:"Apna App", salary:"₹25,000 + Commission", location:"Balaghat, MP", type:"Full Time", qualification:"12th Pass", experience:"0-2 Years", age:"21-45", pf:"PF Nahi", work:"Mobile", process:"1. Apply → 2. LIC Training → 3. IRDA Exam → 4. Code Milta Hai", link:"https://www.apna.co/jobs/insurance-agent-jobs-balaghat", tags:["mobile","balaghat"]},
+  {title:"Bank DSA / Loan Agent", company:"HDFC Bank", platform:"Naukri.com", salary:"₹18,000 + Incentive", location:"Balaghat, MP", type:"Full Time", qualification:"12th Pass", experience:"Fresher", age:"21-40", pf:"PF Haan", work:"Mobile + Bike", process:"1. Apply → 2. Bank Interview → 3. DSA Code → 4. Loan Karo", link:"https://www.naukri.com/bank-dsa-jobs", tags:["mobile","balaghat"]},
+  {title:"Flipkart Delivery Executive", company:"Flipkart", platform:"Apna App", salary:"₹15,000 - ₹20,000", location:"Balaghat, MP", type:"Full Time", qualification:"10th Pass", experience:"Fresher", age:"18-40", pf:"PF Haan", work:"Mobile + Bike", process:"1. Apply → 2. Document Check → 3. Bike Training → 4. Joining", link:"https://www.apna.co/jobs/flipkart-delivery-jobs-balaghat", tags:["mobile","balaghat"]},
+  {title:"Swiggy Delivery Boy", company:"Swiggy", platform:"WorkIndia", salary:"₹18,000 - ₹25,000", location:"Balaghat, MP", type:"Part Time", qualification:"8th Pass", experience:"Fresher", age:"18-35", pf:"PF Nahi", work:"Mobile + Bike", process:"1. Apply → 2. WorkIndia Signup → 3. Bag Milega → 4. Delivery Start", link:"https://www.workindia.in", tags:["mobile","balaghat"]},
+  {title:"Zomato Delivery Partner", company:"Zomato", platform:"WorkIndia", salary:"₹18,000 - ₹24,000", location:"Balaghat, MP", type:"Part Time", qualification:"8th Pass", experience:"Fresher", age:"18-35", pf:"PF Nahi", work:"Mobile + Bike", process:"1. Apply → 2. Zomato App Download → 3. Training → 4. Joining", link:"https://www.workindia.in", tags:["mobile","balaghat"]},
+  {title:"Hospital Receptionist", company:"Govt Hospital", platform:"Naukri.com", salary:"₹10,000 - ₹14,000", location:"Balaghat, MP", type:"Full Time", qualification:"12th Pass", experience:"0-1 Years", age:"18-30", pf:"PF Haan", work:"Office", process:"1. Apply → 2. Interview → 3. Document → 4. Joining", link:"https://www.naukri.com/hospital-receptionist-jobs-balaghat", tags:["balaghat"]},
+  {title:"Retail Sales Executive", company:"Reliance Trends", platform:"Apna App", salary:"₹14,000 - ₹18,000", location:"Balaghat, MP", type:"Full Time", qualification:"10th Pass", experience:"Fresher", age:"18-35", pf:"PF Haan", work:"Office", process:"1. Apply → 2. Store Interview → 3. Training → 4. Joining", link:"https://www.apna.co/jobs/reliance-retail-jobs-balaghat", tags:["balaghat"]},
+  {title:"Driver - Cab", company:"Ola/Uber", platform:"Quikr Jobs", salary:"₹20,000 - ₹30,000", location:"Balaghat, MP", type:"Full Time", qualification:"8th Pass", experience:"1 Year License", age:"21-45", pf:"PF Nahi", work:"Mobile + Car", process:"1. Apply → 2. Document Upload → 3. Car Check → 4. Ride Start", link:"https://www.quikrjobs.com", tags:["mobile","balaghat"]},
+  {title:"Factory Helper", company:"ITC Factory", platform:"WorkIndia", salary:"₹12,000 - ₹16,000", location:"Jabalpur, MP", type:"Full Time", qualification:"8th Pass", experience:"Fresher", age:"18-40", pf:"PF Haan", work:"Factory", process:"1. Apply → 2. WorkIndia Call → 3. Medical → 4. Joining", link:"https://www.workindia.in", tags:[]},
+  {title:"Tele Sales WFH", company:"Bajaj Finance", platform:"Indeed", salary:"₹15,000 + Incentive", location:"Work From Home", type:"Full Time", qualification:"12th Pass", experience:"Fresher", age:"18-35", pf:"PF Haan", work:"Mobile + Laptop", process:"1. Apply → 2. Indeed Signup → 3. Interview → 4. Training", link:"https://in.indeed.com", tags:["wfh","mobile"]},
+  {title:"Security Guard", company:"G4S", platform:"Quikr Jobs", salary:"₹13,000 - ₹16,000", location:"Balaghat, MP", type:"Full Time", qualification:"8th Pass", experience:"Fresher", age:"18-45", pf:"PF Haan", work:"Office", process:"1. Apply → 2. Physical → 3. Training → 4. Posting", link:"https://www.quikrjobs.com", tags:["balaghat"]},
+  {title:"Content Writer WFH", company:"Freelance", platform:"LinkedIn", salary:"₹10,000 - ₹20,000", location:"Work From Home", type:"Part Time", qualification:"12th Pass", experience:"Fresher", age:"18-40", pf:"PF Nahi", work:"Laptop + Mobile", process:"1. Apply → 2. LinkedIn Profile → 3. Sample → 4. Work Start", link:"https://www.linkedin.com/jobs", tags:["wfh","mobile"]},
+  {title:"Warehouse Worker", company:"Amazon", platform:"Amazon Jobs", salary:"₹16,000 - ₹19,000", location:"Nagpur, MH", type:"Full Time", qualification:"10th Pass", experience:"Fresher", age:"18-35", pf:"PF Haan", work:"Warehouse", process:"1. Apply → 2. Amazon Test → 3. Joining → 4. Training", link:"https://www.amazon.jobs/en/jobs", tags:[]},
+  {title:"Online Tutor WFH", company:"Vedantu", platform:"Indeed", salary:"₹20,000 - ₹35,000", location:"Work From Home", type:"Part Time", qualification:"Graduate", experience:"0-2 Years", age:"20-40", pf:"PF Nahi", work:"Laptop + Mobile", process:"1. Apply → 2. Demo Class → 3. Training → 4. Teaching", link:"https://in.indeed.com", tags:["wfh","mobile"]}
 ];
 
 const jobList = document.getElementById('jobList');
 
-jobs.forEach((job, i)=>{
-  jobList.innerHTML += `
-  <div class="job-card">
-    <div class="job-title">${job.title}</div>
-    <div class="company">Company: <span>${job.company}</span> | Via: <span>${job.platform}</span></div>
-    <div class="salary">Salary: ${job.salary}</div>
+function renderJobs(){
+  jobList.innerHTML = '';
+  jobs.forEach((job, i)=>{
+    let random1 = Math.floor(Math.random() * 9) + 1;
+    let random2 = Math.floor(Math.random() * 9) + 1;
+    let answer = random1 + random2;
 
-    <div class="details">
-      <b>Qualification:</b> ${job.qualification}<br>
-      <b>Experience:</b> ${job.experience}<br>
-      <b>Age:</b> ${job.age}<br>
-      <b>Kaam kaise:</b> ${job.work}
-    </div>
+    jobList.innerHTML += `
+    <div class="job-card" data-tags="${job.tags.join(' ')}">
+      <div class="job-title">${job.title}</div>
+      <div class="company">Company: <span>${job.company}</span> | Via: <span>${job.platform}</span></div>
+      <div class="salary">Salary: ${job.salary}</div>
 
-    <div class="process">
-      <b>Joining Process:</b><br>${job.process}
-    </div>
+      <div class="details">
+        <b>Qualification:</b> ${job.qualification}<br>
+        <b>Experience:</b> ${job.experience}<br>
+        <b>Age:</b> ${job.age}<br>
+        <b>Kaam kaise:</b> ${job.work}
+      </div>
 
-    <div class="tags">
-      <span class="tag">${job.location}</span>
-      <span class="tag">${job.type}</span>
-      <span class="tag ${job.pf=='PF Haan'?'green':'orange'}">${job.pf}</span>
-      <span class="tag">Bilkul FREE</span>
-    </div>
-    <button class="apply-btn" onclick="showCaptcha(${i})">Apply Now - 100% Free</button>
-    <div class="captcha-box" id="captcha${i}">
-      <p>Robot check: 3 + 2 =?</p>
-      <input type="number" id="ans${i}" style="padding:6px;width:60px">
-      <button onclick="goToJob(${i})" style="padding:6px 12px;background:#10b981;color:white;border:none;border-radius:6px">Submit</button>
-    </div>
-  </div>
-  `
-});
+      <div class="process">
+        <b>Joining Process:</b><br>${job.process}
+      </div>
 
-function showCaptcha(i){
+      <div class="tags">
+        <span class="tag">${job.location}</span>
+        <span class="tag">${job.type}</span>
+        <span class="tag ${job.pf=='PF Haan'?'green':'orange'}">${job.pf}</span>
+        <span class="tag blue">Bilkul FREE</span>
+      </div>
+      <button class="apply-btn" onclick="showCaptcha(${i},${answer},${random1},${random2})">Apply Now - Direct Link</button>
+      <div class="captcha-box" id="captcha${i}">
+        <p class="captcha-question">Robot Check: ${random1} + ${random2} =?</p>
+        <input type="number" id="ans${i}" style="padding:6px;width:60px">
+        <button onclick="goToJob(${i},${answer})" style="padding:6px 12px;background:#10b981;color:white;border:none;border-radius:6px">Submit</button>
+      </div>
+    </div>
+    `
+  });
+}
+
+function showCaptcha(i,ans,r1,r2){
   document.getElementById('captcha'+i).style.display='block';
 }
 
-function goToJob(i){
+function goToJob(i,correctAns){
   let ans = document.getElementById('ans'+i).value;
-  if(ans == '5'){
+  if(ans == correctAns){
     window.open(jobs[i].link, '_blank');
   }else{
     alert('Galat jawab. Fir se try karo');
   }
 }
+
+function filterJobs(type){
+  document.querySelectorAll('.filter-btn').forEach(btn=>btn.classList.remove('active'));
+  event.target.classList.add('active');
+
+  document.querySelectorAll('.job-card').forEach(card=>{
+    if(type == 'all'){
+      card.style.display = 'block';
+    }else{
+      if(card.dataset.tags.includes(type)){
+        card.style.display = 'block';
+      }else{
+        card.style.display = 'none';
+      }
+    }
+  });
+}
+
+renderJobs();
 </script>
 
 </body>

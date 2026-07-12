@@ -74,10 +74,44 @@
     </div>
   </div>
 
-  <!-- CARD 3: NAUKRI.COM -->
+  <!-- CARD 3: TYPING TEST -->
   <div class="job-card">
-    <div class="job-title">NAUKRI.COM - 1000+ Work From Home Jobs</div>
-    <div class="job-detail"><b>Salary:</b> ₹12,000 - ₹35,000/month</div>
+    <div class="job-title">TYPING TEST WFH - Data Entry Jobs</div>
+    <div class="job-detail"><b>Salary:</b> ₹15,000 - ₹25,000/month</div>
+    <div class="job-detail"><b>Qualification:</b> 10th Pass + 30 WPM Typing Speed</div>
+    <div class="job-detail"><b>Education:</b> Basic Computer Knowledge</div>
+    <div class="job-detail"><b>Work:</b> Data Entry, Form Filling, Document Typing from Home</div>
+    <div class="job-detail"><b>Device:</b> Laptop + Internet | <b>Test:</b> Online Typing Test in Interview</div>
+    <button class="btn" onclick="showCaptcha(this,'https://www.naukri.com/typing-work-from-home-jobs')">Apply Now - Verify to Continue</button>
+    <div class="captcha-box">
+      <b>Security Verification</b>
+      <div class="captcha-code"></div>
+      <input type="text" class="captcha-input" placeholder="Upar wala 4 digit code yaha likho">
+      <button class="btn" onclick="verifyCaptcha(this)">Verify & Open Naukri</button>
+    </div>
+  </div>
+
+  <!-- CARD 4: ENGLISH SPEAKING -->
+  <div class="job-card">
+    <div class="job-title">ENGLISH SPEAKING WFH - Customer Support</div>
+    <div class="job-detail"><b>Salary:</b> ₹20,000 - ₹35,000/month + Incentives</div>
+    <div class="job-detail"><b>Qualification:</b> 12th Pass / Graduate</div>
+    <div class="job-detail"><b>Education:</b> Good English Speaking + Communication Skills</div>
+    <div class="job-detail"><b>Work:</b> Customer Support, Sales, Telecalling via Phone/Chat</div>
+    <div class="job-detail"><b>Device:</b> Laptop + Headset + Internet | <b>Test:</b> English Interview on Call</div>
+    <button class="btn" onclick="showCaptcha(this,'https://www.naukri.com/english-speaking-work-from-home-jobs')">Apply Now - Verify to Continue</button>
+    <div class="captcha-box">
+      <b>Security Verification</b>
+      <div class="captcha-code"></div>
+      <input type="text" class="captcha-input" placeholder="Upar wala 4 digit code yaha likho">
+      <button class="btn" onclick="verifyCaptcha(this)">Verify & Open Naukri</button>
+    </div>
+  </div>
+
+  <!-- CARD 5: NAUKRI.COM ALL JOBS -->
+  <div class="job-card">
+    <div class="job-title">NAUKRI.COM - 5000+ Work From Home Jobs</div>
+    <div class="job-detail"><b>Salary:</b> ₹12,000 - ₹40,000/month</div>
     <div class="job-detail"><b>Qualification:</b> 10th, 12th, Graduate, Any Degree</div>
     <div class="job-detail"><b>Education:</b> Fresher & Experienced Both Eligible</div>
     <div class="job-detail"><b>Work:</b> Data Entry, Telecalling, Back Office, Support - All WFH</div>
@@ -118,7 +152,7 @@ function showCaptcha(btn, link) {
   let codeBox = box.querySelector('.captcha-code');
   codeBox.innerText = generateCode();
   codeBox.dataset.link = link;
-  btn.style.display = 'none'; // Apply button hide
+  btn.style.display = 'none';
 }
 
 function verifyCaptcha(btn) {
@@ -130,7 +164,7 @@ function verifyCaptcha(btn) {
   if(realCode == userCode) {
     window.open(link, '_blank');
     box.style.display = 'none';
-    box.previousElementSibling.style.display = 'block'; // Apply button wapas
+    box.previousElementSibling.style.display = 'block';
   } else {
     alert('Galat code! Phir se try karo');
     box.querySelector('.captcha-code').innerText = generateCode();
